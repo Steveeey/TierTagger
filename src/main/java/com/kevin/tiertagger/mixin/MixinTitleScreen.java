@@ -7,7 +7,9 @@ import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.gui.screen.ConfirmScreen;
 import net.minecraft.client.gui.screen.Screen;
 import net.minecraft.client.gui.screen.TitleScreen;
+import net.minecraft.text.LiteralText;
 import net.minecraft.text.Text;
+import net.minecraft.text.TranslatableText;
 import net.minecraft.util.Formatting;
 import net.minecraft.util.Util;
 import org.spongepowered.asm.mixin.Mixin;
@@ -33,7 +35,7 @@ public class MixinTitleScreen extends Screen {
         Version latestVersion = TierTagger.getLatestVersion();
 
         if (currentVersion != null && latestVersion != null && currentVersion.compareTo(latestVersion) < 0) {
-            Text newVersion = Text.literal(latestVersion.getFriendlyString()).formatted(Formatting.GREEN);
+            Text newVersion = new LiteralText(latestVersion.getFriendlyString()).formatted(Formatting.GREEN);
 
             MinecraftClient.getInstance().setScreen(new ConfirmScreen(
                     b -> {
@@ -44,10 +46,10 @@ public class MixinTitleScreen extends Screen {
 
                         MinecraftClient.getInstance().setScreen(this);
                     },
-                    Text.translatable("tiertagger.outdated.title"),
-                    Text.translatable("tiertagger.outdated.desc", newVersion),
-                    Text.translatable("tiertagger.outdated.download"),
-                    Text.translatable("tiertagger.outdated.ignore")
+                    new TranslatableText("tiertagger.outdated.title"),
+                    new TranslatableText("tiertagger.outdated.desc", newVersion),
+                    new TranslatableText("tiertagger.outdated.download"),
+                    new TranslatableText("tiertagger.outdated.ignore")
             ));
         }
 

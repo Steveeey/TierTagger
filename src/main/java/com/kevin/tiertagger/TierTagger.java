@@ -156,7 +156,7 @@ public class TierTagger implements ModInitializer {
             case "LT2" -> 0xFFE4B5; // light orange
             case "HT3" -> 0xDAA520; // goldenrod
             case "LT3" -> 0xEEE8AA; // pale goldenrod
-            case "HT4" -> 0x006400; // dark green
+            case "HT4" -> 0x646400; // dark green
             case "LT4" -> 0x90EE90; // light green
             case "HT5" -> 0x808080; // grey
             case "LT5" -> 0xD3D3D3; // pale grey
